@@ -1,10 +1,24 @@
+from .message import Message
+
 class MessageResponse:
     """MessageResponse class."""
 
-    def __init__(self, status=None, message=None):
-        """Initialize the response."""
-        self._status = status
-        self._message = message
+    def __init__(self, response=None):
+        if response is None:
+            return
+
+        self._status = response.status_code
+        body = response.json()
+
+        if self._status == 200:
+            self._message = Message(body)
+            self._error = None
+        elif self._status == 500:
+            self._message = None
+            self._error = body['error']
+        else:
+            self._message = None
+            self._error = 'Unknown error'
 
     @property
     def status(self):
@@ -15,3 +29,8 @@ class MessageResponse:
     def message(self):
         """Return the message."""
         return self._message
+
+    @property
+    def error(self):
+        """Return the error."""
+        return self._error

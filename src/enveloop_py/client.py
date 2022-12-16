@@ -26,7 +26,7 @@ class Client:
             headers={'Authorization': 'token {}'.format(self._api_key)}
         )
 
-        return MessageResponse(status=res.status_code, message=res.json())
+        return MessageResponse(res)
 
     def template_info(self, template=None):
         res = requests.get(
@@ -34,4 +34,4 @@ class Client:
             headers={'Authorization': 'token {}'.format(self._api_key)}
         )
 
-        return TemplateResponse(status=res.status_code, template=res.json())
+        return TemplateResponse(res)
