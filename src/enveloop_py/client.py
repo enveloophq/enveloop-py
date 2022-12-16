@@ -17,7 +17,7 @@ class Client:
             'from': from_address,
             'subject': subject,
             'template': template,
-            'template_variables': template_variables
+            'templateVariables': template_variables
         }
 
         res = requests.post(
