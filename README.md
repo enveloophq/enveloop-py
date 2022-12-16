@@ -16,15 +16,15 @@ Setup the client connection:
 
 ```python
 import os
-from enveloop_py import enveloop
+from enveloop_py import api
 
-client = enveloop.connect(os.environ['ENVELOOP_API_TOKEN'])
+enveloop = api.connect(os.environ['ENVELOOP_API_TOKEN'])
 ```
 
 Send a message: 
 
 ```python
-client.send_message(
+enveloop.send_message(
   template='welcome-email',
   to='user@email.com',
   from_address='welcome@myapp.com',
@@ -38,7 +38,7 @@ client.send_message(
 Get information about a template (variables and body html):
 
 ```python
-client.template_info(template='welcome-email')
+enveloop.template_info(template='welcome-email')
 ```
 
 ## Contributing

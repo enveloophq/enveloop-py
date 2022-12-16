@@ -11,7 +11,7 @@ class Client:
         self._api_key = api_key
         self._endpoint = 'https://{}'.format(api_host) if ssl else 'http://{}'.format(api_host)
 
-    def send_message(self, template, to=None, from_address=None, subject=None, template_variables={}):
+    def send_message(self, template=None, to=None, from_address=None, subject=None, template_variables={}):
         data = {
             'to': to,
             'from': from_address,
@@ -28,7 +28,7 @@ class Client:
 
         return MessageResponse(status=res.status_code, message=res.json())
 
-    def template_info(self, template):
+    def template_info(self, template=None):
         res = requests.get(
             '{}/templates/{}'.format(self._endpoint, template),
             headers={'Authorization': 'token {}'.format(self._api_key)}
