@@ -30,7 +30,7 @@ enveloop.send_message(
   from_address='welcome@myapp.com',
   subject='Welcome to MyApp',
   template_variables={
-    first_name='John',
+    "first_name": 'John',
   }
 )
 ```
