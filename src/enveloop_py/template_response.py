@@ -13,12 +13,8 @@ class TemplateResponse:
         if self._status == 200:
             self._template = Template(body)
             self._error = None
-        elif self._status == 500:
-            self._template = None
-            self._error = body['error']
         else:
-            self._template = None
-            self._error = 'Unknown error'
+            raise RuntimeError(body['error'])
 
     @property
     def status(self):

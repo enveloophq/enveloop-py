@@ -13,12 +13,8 @@ class MessageResponse:
         if self._status == 200:
             self._message = Message(body)
             self._error = None
-        elif self._status == 500:
-            self._message = None
-            self._error = body['error']
         else:
-            self._message = None
-            self._error = 'Unknown error'
+            raise RuntimeError(body['error'])
 
     @property
     def status(self):
