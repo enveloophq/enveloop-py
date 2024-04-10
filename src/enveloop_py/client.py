@@ -11,12 +11,13 @@ class Client:
         self._api_key = api_key
         self._endpoint = 'https://{}'.format(api_host) if ssl else 'http://{}'.format(api_host)
 
-    def send_message(self, template=None, to=None, from_address=None, subject=None, template_variables={}):
+    def send_message(self, template=None, html=None, to=None, from_address=None, subject=None, template_variables={}):
         data = {
             'to': to,
             'from': from_address,
             'subject': subject,
             'template': template,
+            'html': html,
             'templateVariables': template_variables
         }
 
